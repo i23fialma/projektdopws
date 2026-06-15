@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="/style.css">
+<h1>Upravit knihu</h1>
+<form action="/books/<%= book._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" value="<%= book.title %>" required><br><br>
+    <input type="text" name="author" value="<%= book.author %>" required><br><br>
+    <input type="number" name="pages" value="<%= book.pages %>" required><br><br>
+    <textarea name="description" required><%= book.description %></textarea><br><br>
+    <label>Nový obrázek obálky (nech prázdné, pokud nechceš měnit):</label><br>
+    <input type="file" name="image"><br><br>
+    <button type="submit">Uložit změny</button>
+</form>
+<p><a href="/books/<%= book._id %>">Zpět na detail</a></p>

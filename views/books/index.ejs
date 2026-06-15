@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/style.css">
+<% if (user) { %>
+    <div style="background-color: #eee; padding: 10px; margin-bottom: 20px;">
+        <p>Přihlášen jako: <strong><%= user.username %></strong></p>
+        <form action="/logout" method="POST">
+            <button type="submit">Odhlásit se</button>
+        </form>
+    </div>
+    <p><a href="/books/create"><button>+ Přidat novou knihu</button></a></p>
+<% } else { %>
+    <p><a href="/login"><button>Přihlásit se</button></a> | <a href="/register">Registrovat se</a></p>
+<% } %>
+
+<h1>Seznam knih</h1>
+<% books.forEach(book => { %>
+    <div>
+        <h2>
+            <a href="/books/<%= book._id %>"><%= book.title %></a>
+        </h2>
+        <p>Autor: <%= book.author %></p>
+        <% if (book.image) { %>
+            <img src="/uploads/<%= book.image %>" width="150" alt="Obálka knihy">
+        <% } %>
+    </div>
+    <hr>
+<% }) %>

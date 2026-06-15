@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/style.css">
+<h1><%= book.title %></h1>
+<p><strong>Autor:</strong> <%= book.author %></p>
+<p><strong>Počet stran:</strong> <%= book.pages %></p>
+<p><strong>Popis:</strong> <%= book.description %></p>
+
+<% if (book.image) { %>
+    <img src="/uploads/<%= book.image %>" width="300" alt="Obálka knihy">
+    <br><br>
+<% } %>
+
+<% if (user) { %>
+    <a href="/books/<%= book._id %>/edit"><button>Upravit</button></a>
+    <form action="/books/<%= book._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Smazat</button>
+    </form>
+    <br><br>
+<% } %>
+
+<p><a href="/books">Zpět na seznam</a></p>
